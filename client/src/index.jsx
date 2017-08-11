@@ -1,31 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import CryptoVisual from './containers/cryptovisual.jsx'
 import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Provider, connect } from 'react-redux';
-
-// import CurrentValue from './CurrentValue';
-// import TransactionVolumeGraph from './TransactionVolumeGraph';
-// import Description from './Description';
-
 import rootReducer from './reducers/index.js'
+
+import App from './components/app.jsx'
 import { getCryptoData } from './actions/index.js'
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
-   
-  }
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware,
+    createLogger()
+    )
+);
 
-  render () {
-    return (
-      <div>
-        <CryptoVisual />
-    </div>)
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, document.getElementById('app'));
