@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Graph from './Graph.jsx';
 
-class CryptoList extends Component {
+class CryptoSearchList extends Component {
   renderCurrency(currencyData) {
     const fromType = Object.keys(currencyData.DISPLAY)[0] ;
     const toType = Object.keys(currencyData.DISPLAY[fromType])[0];
@@ -46,7 +46,7 @@ function mapStateToProps( { currencies } ) {
   return { currencies };
 }
 
-export default connect(mapStateToProps)(CryptoList);
+export default connect(mapStateToProps)(CryptoSearchList);
 
 
 // {

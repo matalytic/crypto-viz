@@ -25,7 +25,7 @@ class SearchBar extends Component {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">
         <input className='form-control' 
-        placeholder='Track Your Favorite Cryptocurrencies'
+        placeholder='Compare Your Favorite Cryptocurrencies'
         value={this.state.term}
         onChange={this.onInputChange} />
         <span className="input-group-btn">

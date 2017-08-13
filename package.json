@@ -33,11 +33,13 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.8.6",
     "react": "^15.4.2",
+    "react-burger-menu": "^2.1.4",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.6",
     "react-sparklines": "^1.7.0",
     "react-svg": "^2.1.21",
     "redux": "^3.7.2",
+    "redux-burger-menu": "^0.2.1",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
