@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CryptoVisual from '../containers/cryptovisual.jsx';
-
+import SearchBar from './SearchBar.jsx';
+import CryptoList from './CryptoList.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,7 +10,8 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <CryptoVisual />
-    </div>)
+        <SearchBar />
+        <CryptoList />
+      </div>)
   }
 }

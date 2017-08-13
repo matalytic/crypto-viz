@@ -1,55 +1,34 @@
 import axios from 'axios';
 
-const API_URL = "https://api-public.sandbox.gdax.com/",
-      SOCKET_URL = "wss://ws-feed.gdax.com"
+// Fetches general market data
+const INFO_ROOT_URL = 'https://min-api.cryptocompare.com/data/pricemultifull?'
 
-export const getCryptoData = () => {
-  return function (dispatch) {
-    axios.get(`${API_URL}products`)
-      .then(data => {
-        dispatch(setProducts(data));
-        dispatch(connectSocket());
-      })
-      .catch(err => console.log(err))
-  };
-};
+// Fetches historical data for graphs
+const GRAPH_ROOT_URL = 'https://min-api.cryptocompare.com/data/histoday?fsym='
 
-export const connectSocket = () => {
-  const ws = new WebSocket(SOCKET_URL);
+export function fetchCrypto(fromType, toType = 'USD') {
+  const infoUrl = `${INFO_ROOT_URL}fsyms=${fromType}&tsyms=${toType}`;
+  const request = axios.get(infoUrl);
 
-  return function (dispatch, getState) {
-    ws.onopen = () => {
-      const state = getState(),
-        product_ids = Object.keys(state.prices)
-                            .map(k => state.prices[k].id);
-
-      ws.send(JSON.stringify({
-        type: 'subscribe',
-        product_ids
-      }));
-    }
-
-    ws.onmessage = (msg) => {
-      const { type, price, product_id, reason, size } = JSON.parse(msg.data);
-      const value = {
-        time: new Date(),
-        price: Number(price)
-      }
-
-      if (type === 'match' && price) {
-        dispatch(addValue(product_id, value));
-      }
-    }
-
-    ws.onerror = (e) => {
-      console.log(e.message);
-    }
-
-    ws.onclose = (e) => {
-      console.log(e.code, e.reason);
-    }
+  console.log('REQUEST::', request);
+  return {
+    type: 'FETCH_CURRENCY',
+    payload: request
   }
 }
+
+export function fetchCryptoGraph(fromType, toType = 'USD') {
+  const url = `${GRAPH_ROOT_URL}${fromType}&tsym=USD&allData=true&aggregate=15&limit=100`
+  const request = axios.get(url);
+
+  return {
+    type: 'FETCH_GRAPH_DATA',
+    payload: request,
+    meta: { fromType, toType }
+  }
+}
+
+
 
 export const setProducts = (products) => ({
   type: 'SET_PRODUCTS',
@@ -64,5 +43,5 @@ export const addValue = (product, value) => ({
 
 
 
-
+// https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD
 

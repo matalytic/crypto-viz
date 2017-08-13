@@ -6,7 +6,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 
 
-app.get('/items', function (req, res) {
+app.get('/', function (req, res) {
   
 
 });
