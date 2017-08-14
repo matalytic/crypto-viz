@@ -1,12 +1,10 @@
 import React from 'react';
-import SearchBar from './SearchBar.jsx';
-import CryptoSearchList from './CryptoSearchList.jsx';
+import SearchBar from './SearchBar';
+import CryptoSearchList from './CryptoSearchList';
 
-export default (props) => {
-  return (
-    <div>
-      <SearchBar />
-      <CryptoSearchList />
-    </div>
-    )
-}
+export default () => (
+  <div>
+    <SearchBar />
+    <CryptoSearchList />
+  </div>
+);

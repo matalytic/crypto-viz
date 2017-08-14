@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Nav from './Nav.jsx'
-import AllCryptoList from './AllCryptoList.jsx';
-import SearchBarAndList from './SearchBarAndList.jsx'
-import CurrencyConverter from './CurrencyConverter.jsx';
+import Nav from './Nav';
+import AllCryptoList from './AllCryptoList';
+import SearchBarAndList from './SearchBarAndList';
+import CurrencyConverter from './CurrencyConverter';
 
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render () {
-    return (
+export default () => (
+  <div>
+    <BrowserRouter>
       <div>
-        <BrowserRouter>
-          <div>
-            <span className='title'>CryptoViz</span>
-            <Nav />
-            <Switch>
-              <Route path="/all" component={AllCryptoList}/>
-              <Route path="/currency-converter" component={CurrencyConverter}/>
-              <Route path="/" component={SearchBarAndList}/>
-            </Switch>
-          </div>
-        </BrowserRouter>
+        <span className="title">CryptoViz</span>
+        <Nav />
+        <Switch>
+          <Route path="/all" component={AllCryptoList} />
+          <Route path="/currency-converter" component={CurrencyConverter} />
+          <Route path="/" component={SearchBarAndList} />
+        </Switch>
       </div>
-      )
-  }
-}
+    </BrowserRouter>
+  </div>
+);

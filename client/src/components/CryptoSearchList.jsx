@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Graph from './Graph.jsx';
-import { formatNum } from '../utils/utils.js';
+import Graph from './Graph';
+import { formatNum } from '../utils/utils';
 
 class CryptoSearchList extends Component {
-
   renderCurrency(currencyData) {
     const name = currencyData.name;
     const price = formatNum(currencyData.price_usd);
     const tradingVolume = formatNum(currencyData['24h_volume_usd']);
     const marketCap = formatNum(currencyData.market_cap_usd);
-    const fromType= currencyData.symbol;
+    const fromType = currencyData.symbol;
 
     return (
       <tr key={fromType}>
-        <td><span className='currency-name'>{name}</span></td>
-        <td><span className='price'>{price}</span></td>
+        <td><span className="currency-name">{name}</span></td>
+        <td><span className="price">{price}</span></td>
         <td>{tradingVolume}</td>
         <td>{marketCap}</td>
         <td><Graph fromType={fromType} /></td>
       </tr>
-      )
+    );
   }
 
   render() {
     return (
-      <div className='crypto-list-container'>
+      <div className="crypto-list-container">
         <table className="table table-hover">
           <thead>
             <tr>
@@ -45,7 +44,7 @@ class CryptoSearchList extends Component {
   }
 }
 
-function mapStateToProps( { currencies } ) {
+function mapStateToProps({ currencies }) {
   return { currencies };
 }
 

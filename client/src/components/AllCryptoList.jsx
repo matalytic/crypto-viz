@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Graph from './Graph.jsx';
-import { fetchAllCrypto } from '../actions/index.js';
-import { formatNum } from '../utils/utils.js';
+import Graph from './Graph';
+import { fetchAllCrypto } from '../actions/index';
+import { formatNum } from '../utils/utils';
 
 class AllCryptoList extends Component {
-
   componentDidMount() {
     this.props.fetchAllCrypto();
   }
@@ -15,22 +14,22 @@ class AllCryptoList extends Component {
     const price = formatNum(currencyData.price_usd);
     const tradingVolume = formatNum(currencyData['24h_volume_usd']);
     const marketCap = formatNum(currencyData.market_cap_usd);
-    const fromType= currencyData.symbol;
+    const fromType = currencyData.symbol;
 
     return (
       <tr key={fromType}>
-        <td><span className='currency-name'>{name}</span></td>
-        <td><span className='price'>{price}</span></td>
+        <td><span className="currency-name">{name}</span></td>
+        <td><span className="price">{price}</span></td>
         <td>{tradingVolume}</td>
         <td>{marketCap}</td>
         <td><Graph fromType={fromType} /></td>
       </tr>
-      )
+    );
   }
 
   render() {
     return (
-      <div className='crypto-list-container'>
+      <div className="crypto-list-container">
         <table className="table table-hover">
           <thead>
             <tr>
@@ -50,8 +49,8 @@ class AllCryptoList extends Component {
   }
 }
 
-function mapStateToProps( { allCurrencies } ) {
+function mapStateToProps({ allCurrencies }) {
   return { allCurrencies };
 }
 
-export default connect(mapStateToProps, {fetchAllCrypto})(AllCryptoList);
+export default connect(mapStateToProps, { fetchAllCrypto })(AllCryptoList);

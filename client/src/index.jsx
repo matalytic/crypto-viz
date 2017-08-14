@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
-import { Provider, connect } from 'react-redux';
-import rootReducer from './reducers/index.js'
 import ReduxPromise from 'redux-promise';
-import App from './components/App.jsx'
+import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
+import App from './components/App';
 
 const store = createStore(
   rootReducer,
   applyMiddleware(
     ReduxPromise,
-    createLogger()
-    )
+    createLogger(),
+  ),
 );
 
 ReactDOM.render(

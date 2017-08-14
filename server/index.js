@@ -17,7 +17,5 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.use('/api', router);
 
-app.listen(port, function() {
-  console.log(`listening on port ${port}`);
-});
+app.listen(port, () => console.log(`listening on port ${port}`));
 
