@@ -1,21 +1,17 @@
 # CryptoViz
 
-Get the latest crytocurrency market information with data visualization and currency conversion
+Get the latest cryptocurrency market information with data visualization and currency conversion
 
 ## Getting Started
 
-To run locally:
+Install dependencies 
+`npm install`
 
-Start server
+Start sever 
+`npm run server`
 
-```
-npm run server
-```
-
-Compile with Webpack
-```
-npm run webpack
-```
+Compile and watch with Webpack
+`npm run webpack`
 
 ### Built With
 
