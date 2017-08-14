@@ -1,5 +1,7 @@
 # CryptoViz
 
+![Screenshot](https://github.com/matalytic/crypto-viz/blob/screen-shots/crypto-viz-preview.png);
+
 Get the latest cryptocurrency market information with data visualization and currency conversion
 
 ## Getting Started
