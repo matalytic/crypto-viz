@@ -11,15 +11,16 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var currencySchema = mongoose.Schema({
+  name: String,
+  info: Object,
+  graphData: Array
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Currency = mongoose.model('Currency', currencySchema);
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Currency.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {

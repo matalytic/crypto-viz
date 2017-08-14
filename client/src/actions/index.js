@@ -7,7 +7,7 @@ const INFO_ROOT_URL = 'https://min-api.cryptocompare.com/data/pricemultifull?'
 const GRAPH_ROOT_URL = 'https://min-api.cryptocompare.com/data/histoday?fsym='
 
 export function fetchAllCrypto() {
-  const url ="https://api.coinmarketcap.com/v1/ticker/?limit=50";
+  const url ="https://api.coinmarketcap.com/v1/ticker/?limit=25";
   const request = axios.get(url);
 
   return {
@@ -17,8 +17,8 @@ export function fetchAllCrypto() {
 }
 
 export function fetchCrypto(fromType, toType = 'USD') {
-  const infoUrl = `${INFO_ROOT_URL}fsyms=${fromType}&tsyms=${toType}`;
-  const request = axios.get(infoUrl);
+  const url =`https://api.coinmarketcap.com/v1/ticker/${fromType}`;
+  const request = axios.get(url);
 
   console.log('REQUEST::', request);
   return {

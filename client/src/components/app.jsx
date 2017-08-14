@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import SearchBar from './SearchBar.jsx';
-import CryptoSearchList from './CryptoSearchList.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Nav from './Nav.jsx'
 import AllCryptoList from './AllCryptoList.jsx';
+import SearchBarAndList from './SearchBarAndList.jsx'
 
 export default class App extends Component {
   constructor(props) {
@@ -11,9 +13,16 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <AllCryptoList />
-        <SearchBar />
-        <CryptoSearchList />
-      </div>)
+        <BrowserRouter>
+          <div>
+            <Nav />
+            <Switch>
+              <Route path="/all" component={AllCryptoList}/>
+              <Route path="/" component={SearchBarAndList}/>
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </div>
+      )
   }
 }

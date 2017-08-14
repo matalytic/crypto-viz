@@ -2,7 +2,7 @@ export default function(state = [], action) {
   switch(action.type) {
     case 'FETCH_CURRENCY':
     console.log('payload ', action.payload);
-      return [action.payload.data, ...state];
+      return [...action.payload.data, ...state];
     }
   return state;
 }

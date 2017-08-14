@@ -3,15 +3,23 @@ import { connect } from 'react-redux';
 import Graph from './Graph.jsx';
 
 class CryptoSearchList extends Component {
+
   renderCurrency(currencyData) {
-    const fromType = Object.keys(currencyData.DISPLAY)[0] ;
-    const toType = Object.keys(currencyData.DISPLAY[fromType])[0];
-    const price = currencyData.DISPLAY[fromType][toType].PRICE;
-    const tradingVolume = currencyData.DISPLAY[fromType][toType].VOLUME24HOURTO;
-    const marketCap = currencyData.DISPLAY[fromType][toType].MKTCAP;
+
+    function formatNum(num) {
+      return `$${parseInt(num).toLocaleString()}`;
+    }
+
+    console.log('currency data', currencyData);
+    const name = currencyData.name;
+    const price = formatNum(currencyData.price_usd);
+    const tradingVolume = formatNum(currencyData['24h_volume_usd']);
+    const marketCap = formatNum(currencyData.market_cap_usd);
+    const fromType= currencyData.symbol;
+
     return (
       <tr key={fromType}>
-        <td>{fromType}</td>
+        <td>{name}</td>
         <td>{price}</td>
         <td>{tradingVolume}</td>
         <td>{marketCap}</td>
