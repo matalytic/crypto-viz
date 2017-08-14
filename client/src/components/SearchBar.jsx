@@ -23,15 +23,17 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group">
-        <input className='form-control' 
-        placeholder='Compare Your Favorite Cryptocurrencies'
-        value={this.state.term}
-        onChange={this.onInputChange} />
-        <span className="input-group-btn">
-          <button type="submit" className="btn btn-secondary">Submit</button>
-        </span>
-      </form>
+      <div className='form-container'>
+        <form onSubmit={this.onFormSubmit} className="search input-group">
+          <input className='form-control' 
+          placeholder='Compare Your Favorite Cryptocurrencies'
+          value={this.state.term}
+          onChange={this.onInputChange} />
+          <span className="input-group-btn">
+            <button type="submit" className="btn btn-secondary">Submit</button>
+          </span>
+        </form>
+      </div>
       )
   }
 }

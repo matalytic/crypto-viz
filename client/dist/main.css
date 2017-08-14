@@ -3,17 +3,80 @@ td, th {
   text-align: center !important;
 }
 
-/*
-.input-group {
-  margin: 20px 0px;
-}
-
 svg {
   height: 150px;
 }
 
-td:first-of-type, td:first-of-type > div {
-  height: 200px;
-  width: 250px;
+.convert-form {
+  display: inline;
+  width:400px;
+  margin: 0 auto;
 }
-*/
+
+.navigation {
+  margin: 20px auto;
+  width: 600px;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Domine', serif;
+
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #000000;
+  margin: 10px;
+}
+
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+  font-family:'Montserrat', sans-serif;
+}
+
+
+.crypto-list-container {
+  width: 90%;
+  margin: 25px auto;
+  font-family: 'Domine', serif;
+  font-size: 18px;
+}
+
+.conversion-container {
+  width: 25%;
+  margin: 10% auto;
+  text-align: center;
+}
+
+.bg {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background: linear-gradient(
+                     rgba(20,20,20, .5), 
+                     rgba(20,20,20, .5));
+    background: url('http://www.nimc.gov.ng/wp-content/uploads/2015/05/Geometric-Background.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+.currency-name {
+  font-weight: 200;
+  font-size: 25px;
+}
+
+.price {
+  color: #5aa85d;
+}
+
+.title {
+  font-family: 'Domine', serif;
+  font-size: 40px;
+  font-weight: 200;
+  width: 20%;
+  margin: auto;
+  display: block;
+  text-align: center;
+
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Graph from './Graph.jsx';
 import { fetchAllCrypto } from '../actions/index.js';
+import { formatNum } from '../utils/utils.js';
 
 class AllCryptoList extends Component {
 
@@ -9,22 +10,18 @@ class AllCryptoList extends Component {
     this.props.fetchAllCrypto();
   }
 
-  formatNum(num) {
-    return `$${num.toLocaleString()}`;
-  }
 
   renderCurrency(currencyData) {
-    console.log('currency data', currencyData);
     const name = currencyData.name;
-    const price = currencyData.price_usd;
-    const tradingVolume = currencyData['24h_volume_usd'];
-    const marketCap = currencyData.market_cap_usd;
+    const price = formatNum(currencyData.price_usd);
+    const tradingVolume = formatNum(currencyData['24h_volume_usd']);
+    const marketCap = formatNum(currencyData.market_cap_usd);
     const fromType= currencyData.symbol;
 
     return (
       <tr key={fromType}>
-        <td>{name}</td>
-        <td>{price}</td>
+        <td><span className='currency-name'>{name}</span></td>
+        <td><span className='price'>{price}</span></td>
         <td>{tradingVolume}</td>
         <td>{marketCap}</td>
         <td><Graph fromType={fromType} /></td>
@@ -34,7 +31,7 @@ class AllCryptoList extends Component {
 
   render() {
     return (
-      <div>
+      <div className='crypto-list-container'>
         <table className="table table-hover">
           <thead>
             <tr>

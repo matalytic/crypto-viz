@@ -11,10 +11,14 @@ class Graph extends Component {
     this.props.fetchCryptoGraph(this.props.fromType);
   }
   render() {
+
+    const colors = ['#37A359', '#416648', '#5E85A8', '#519180', '#63B78A', '#7FC495', '#3C556B']
+    const rand = Math.floor(Math.random() * colors.length);
+
     return (
       <div>
-        <Sparklines height={120} width={180} data={this.props.graphData[this.props.fromType]} >
-          <SparklinesLine color='#519180' />
+        <Sparklines height={300} width={375} data={this.props.graphData[this.props.fromType]} >
+          <SparklinesLine color={colors[rand]} />
         </Sparklines>
       </div>
       )
