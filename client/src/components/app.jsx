@@ -14,7 +14,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className="bg">
+      <div>
         <BrowserRouter>
           <div>
             <span className='title'>CryptoViz</span>

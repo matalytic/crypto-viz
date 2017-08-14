@@ -51,11 +51,7 @@ svg {
 .bg {
     padding-top: 60px;
     padding-bottom: 40px;
-    background: linear-gradient(
-                     rgba(20,20,20, .5), 
-                     rgba(20,20,20, .5));
     background: url('http://www.nimc.gov.ng/wp-content/uploads/2015/05/Geometric-Background.jpg');
-    background-size: 100%;
     background-attachment: fixed;
     width: 100vw;
     height: 100vh;

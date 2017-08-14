@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 // Fetches general market data
-const INFO_ROOT_URL = 'https://min-api.cryptocompare.com/data/pricemultifull?'
+const INFO_ROOT_URL = 'https://api.coinmarketcap.com/v1/ticker/'
 
 // Fetches historical data for graphs
 const GRAPH_ROOT_URL = 'https://min-api.cryptocompare.com/data/histoday?fsym='
 
 export function fetchAllCrypto() {
-  const url ="https://api.coinmarketcap.com/v1/ticker/?limit=25";
+  const url =`${INFO_ROOT_URL}?limit=25`;
   const request = axios.get(url);
 
   return {
@@ -16,11 +16,11 @@ export function fetchAllCrypto() {
   }
 }
 
+// Fetch a specific currency
 export function fetchCrypto(fromType, toType = 'USD') {
-  const url =`https://api.coinmarketcap.com/v1/ticker/${fromType}`;
+  const url =`${INFO_ROOT_URL}${fromType}`;
   const request = axios.get(url);
 
-  console.log('REQUEST::', request);
   return {
     type: 'FETCH_CURRENCY',
     payload: request
@@ -37,20 +37,3 @@ export function fetchCryptoGraph(fromType, toType = 'USD') {
     meta: { fromType, toType }
   }
 }
-
-
-export const setProducts = (products) => ({
-  type: 'SET_PRODUCTS',
-  products: products.filter(({ quote_currency }) => quote_currency === 'USD')
-});
-
-export const addValue = (product, value) => ({
-  type: 'ADD_VALUE',
-  product,
-  value
-});
-
-
-
-// https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD
-

@@ -7,11 +7,12 @@ class Graph extends Component {
   constructor(props) {
     super(props)
   }
+
   componentDidMount() {
     this.props.fetchCryptoGraph(this.props.fromType);
   }
-  render() {
 
+  render() {
     const colors = ['#37A359', '#416648', '#5E85A8', '#519180', '#63B78A', '#7FC495', '#3C556B']
     const rand = Math.floor(Math.random() * colors.length);
 

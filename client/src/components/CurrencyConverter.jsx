@@ -41,7 +41,6 @@ class CurrencyConverter extends Component {
 
   onChangeHandle(event) {
     this.setState({fromType: event.target.value});
-    this.performConversion(name, value);
   }
 
   componentWillMount() {
@@ -49,6 +48,7 @@ class CurrencyConverter extends Component {
       this.props.fetchAllCrypto();
     }
   }
+
   render() {
     return(
       <div className='conversion-container'>
@@ -65,6 +65,7 @@ class CurrencyConverter extends Component {
               <option>LTC</option>
               <option>BCH</option>
             </select>
+
             <input name='conversion' className='form-control' 
             placeholder='Conversion'
             value={this.state.conversion}
@@ -77,7 +78,6 @@ class CurrencyConverter extends Component {
 }
 
 // Uses all currencies to convert values, therefore list must be populated first
-
 function mapStateToProps( { allCurrencies } ) {
   return { allCurrencies };
 }

@@ -6,10 +6,9 @@ import { formatNum } from '../utils/utils.js';
 
 class AllCryptoList extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchAllCrypto();
   }
-
 
   renderCurrency(currencyData) {
     const name = currencyData.name;

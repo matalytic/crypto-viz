@@ -1,0 +1,17 @@
+const Currency = require('../database/Currency.js');
+
+module.exports.findAll = (req, res) => {
+  Currency.find({})
+    .then(currencies => {
+      res.json(currency)
+    })
+}
+
+module.exports.findOne = (req, res) => {
+  const query = req.params.id;
+  Currency.findOne({name: query})
+    .then(currency => {
+      res.json(currency)
+    })
+}
+
