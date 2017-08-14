@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // Routes
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/api', router);
+app.use('/api', router);
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
-import { fetchCryptoGraph } from '../actions/index.js';
+import { fetchCryptoGraph, fetchCryptoGraphDb } from '../actions/index.js';
 
 class Graph extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      graphData: [],
+    }
   }
 
   componentDidMount() {
-    this.props.fetchCryptoGraph(this.props.fromType);
+   axios.get(`/api/${this.props.fromType}`)
+    .then(currency => {
+      console.log(currency);
+      this.setState({graphData: currency.data.graphData});
+    })
   }
 
   render() {
@@ -18,11 +26,11 @@ class Graph extends Component {
 
     return (
       <div>
-        <Sparklines height={300} width={375} data={this.props.graphData[this.props.fromType]} >
+        <Sparklines height={300} width={375} data={this.state.graphData} >
           <SparklinesLine color={colors[rand]} />
         </Sparklines>
       </div>
-      )
+    );
   }
 }
 
