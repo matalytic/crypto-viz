@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const mLabUri = require('./config');
+
+mongoose.connect(mLabUri);
 
 const db = mongoose.connection;
 
 db.on('error', function() {
-  console.log('mongoose connection error');
+  console.log('Mongoose Connection Error');
 });
 
 db.once('open', function() {
-  console.log('mongoose connected successfully');
+  console.log('Mongoose Connected Successfully To', mLabUri);
 });
+
+module.exports = db;

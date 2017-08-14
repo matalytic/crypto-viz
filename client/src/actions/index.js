@@ -7,7 +7,7 @@ const INFO_ROOT_URL = 'https://api.coinmarketcap.com/v1/ticker/'
 const GRAPH_ROOT_URL = 'https://min-api.cryptocompare.com/data/histoday?fsym='
 
 export function fetchAllCrypto() {
-  const url =`${INFO_ROOT_URL}?limit=25`;
+  const url =`${INFO_ROOT_URL}?limit=30`;
   const request = axios.get(url);
 
   return {
